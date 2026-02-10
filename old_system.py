@@ -10,7 +10,7 @@ def run_system_monolith():
     print("WELCOME TO FLEET COMMAND")
     
     
-    loading = 0
+    loading = 0 
     while loading < 5:
         print("Loading module " + str(loading))
         
@@ -88,4 +88,4 @@ def run_system_monolith():
             
         print("End of cycle.")
 
-run_system_monolith
+run_system_monolith() #Bug 1 - incorrectly calling the function, missing ()
