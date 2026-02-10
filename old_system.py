@@ -62,7 +62,7 @@ def run_system_monolith():
             for rank in r:
                 if rank == "Captain" or "Commander": 
                     count = count + 1
-            print("High ranking officers: " + count) 
+            print("High ranking officers: ", count) #Bug 8 - incorrect syntax. need to use , in stead of + when printing text and valuable together
             
         elif opt == "5":
             print("Shutting down.")
