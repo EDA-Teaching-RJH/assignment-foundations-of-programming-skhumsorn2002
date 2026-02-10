@@ -60,8 +60,11 @@ def run_system_monolith():
             count = 0
             
             for rank in r:
-                if rank == "Captain" or "Commander": 
+                if rank == "Captain" or rank == "Commander": #Bug 9 - Boolean logic error, using "or" does not make python check the same condition. need to specify the condition after using "or"
                     count = count + 1
+                    print("High Rank")
+                else:
+                    print("Low Rank")
             print("High ranking officers: ", count) #Bug 8 - incorrect syntax. need to use , in stead of + when printing text and valuable together
             
         elif opt == "5":
