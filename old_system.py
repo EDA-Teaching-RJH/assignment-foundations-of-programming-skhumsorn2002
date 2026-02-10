@@ -40,7 +40,7 @@ def run_system_monolith():
            
             n.append(new_name)
             r.append(new_rank) #Bug 5 - Did not add new value into the list
-
+            d.append(new_div) #Bug 6 - Did not add new value into the list
             print("Crew member added.")
             
         elif opt == "3":
