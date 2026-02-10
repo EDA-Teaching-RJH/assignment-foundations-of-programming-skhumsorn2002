@@ -25,7 +25,7 @@ def run_system_monolith():
         
         opt = input("Select option: ")
         
-        if opt = "1":  
+        if opt == "1":  #bug 2 incorrect syntax - when comparing Value need to us == sign
             print("Current Crew List:")
             
             for i in range(10):
