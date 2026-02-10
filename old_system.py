@@ -2,6 +2,8 @@ n = ["Picard", "Riker", "Data", "Worf"]
 r = ["Captain", "Commander", "Lt. Commander", "Lieutenant"]
 d = ["Command", "Command", "Operations", "Security"]
 
+x = 10
+fuel = 100
 active = True
 
 def run_system_monolith():
@@ -39,8 +41,8 @@ def run_system_monolith():
             
            
             n.append(new_name)
-            r.append(new_rank) #Bug 5 - Did not add new value into the list
-            d.append(new_div) #Bug 6 - Did not add new value into the list
+            r.append(new_rank) 
+            d.append(new_div) #Bug 5 - Did not add new value into the list
             print("Crew member added.")
             
         elif opt == "3":
@@ -53,19 +55,16 @@ def run_system_monolith():
                 d.pop(idx)
                 print("Removed.")
             else:
-                print("Unknown Name.") #Bug 7 - Crash if name not in the list
+                print("Unknown Name.") #Bug 6 - Crash if name not in the list
             
         elif opt == "4":
             print("Analyzing...")
             count = 0
             
             for rank in r:
-                if rank == "Captain" or rank == "Commander": #Bug 9 - Boolean logic error, using "or" does not make python check the same condition. need to specify the condition after using "or"
+                if rank == "Captain" or rank == "Commander": #Bug 8 - Boolean logic error, using "or" does not make python check the same condition. need to specify the condition after using "or"
                     count = count + 1
-                    print("High Rank")
-                else:
-                    print("Low Rank")
-            print("High ranking officers: ", count) #Bug 8 - incorrect syntax. need to use , in stead of + when printing text and valuable together
+            print("High ranking officers: ", count) #Bug 7 - incorrect syntax. need to use , in stead of + when printing text and valuable together
             
         elif opt == "5":
             print("Shutting down.")
@@ -84,16 +83,15 @@ def run_system_monolith():
        
         if len(n) > 0:
             print("Database has entries.")
-        if len(n) == 0:
+        else: #Bug 10 - Logic error, two separate if 
             print("Database empty.")
 
         
         fuel = 100
         consumption = 0
-        while fuel > 0:
-            
+        if fuel > 0:           #Bug 9 - Incorrect use if statement for checking conition instead of while loop
             print("Idling...")
-            break 
+
             
         print("End of cycle.")
 
