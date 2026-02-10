@@ -29,7 +29,7 @@ def run_system_monolith():
         if opt == "1":  #bug 2 incorrect syntax - when comparing Value need to use == sign
             print("Current Crew List:")
             
-            for i in range(len(n)): #Bugs 4 Out of range, list contain less than 10 value
+            for i in range(len(n)): #Bug 4 Out of range, list contain less than 10 value
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
@@ -39,6 +39,8 @@ def run_system_monolith():
             
            
             n.append(new_name)
+            r.append(new_rank) #Bug 5 - Did not add new value into the list
+
             print("Crew member added.")
             
         elif opt == "3":
