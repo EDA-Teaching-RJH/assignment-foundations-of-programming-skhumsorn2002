@@ -2,8 +2,6 @@ n = ["Picard", "Riker", "Data", "Worf"]
 r = ["Captain", "Commander", "Lt. Commander", "Lieutenant"]
 d = ["Command", "Command", "Operations", "Security"]
 
-x = 10
-fuel = 100
 active = True
 
 def run_system_monolith():
