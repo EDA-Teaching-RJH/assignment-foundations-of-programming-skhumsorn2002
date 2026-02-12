@@ -27,7 +27,7 @@ def display_roster(names, ranks, divs, ids):
 def add_member(current_names, current_ranks, current_divs, current_ids):
      option_ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior Grade", "Ensign", "Cadet"]
      option_divisions = ["Command", "Operations", "Security", "Sciences"]
-     print("\n--- ")
+     print("\n--- Adding New Member ---")
 
      add_name = input("\nEnter new member name: ").title()
 
@@ -95,10 +95,10 @@ def update_rank(current_names, current_ranks, current_ids):
      while True:
           new_rank = input(F"Enter new rank for {option_ranks}: ").title()
           if new_rank not in option_ranks:
-               print("Invalid Ranks")
+               print("\nInvalid Ranks\n")
           else:
                current_ranks[crew_index] = new_rank
-               print("Rank Updated")
+               print("\nRank Updated")
                break
 
      print(F"\n{current_names[crew_index]}'s Rank Have Been Updated To {new_rank}")
@@ -207,11 +207,13 @@ def calculate_payroll(current_ranks):
           rank_index = option_ranks.index(i)
           total_pay = total_pay + payroll[rank_index]
 
+     print(F"\n{option_ranks}")
+     print(payroll)
      print ("\n--- Total Crew Count ---")
      for i in range(len(rank_found)):
           print(F"{rank_found[i]} - {rank_count[i]} - ${total_pay_by_rank[i]}")
 
-     print(F"\nTotal Payroll = {total_pay}")
+     print(F"\nTotal Payroll = ${total_pay}")
      print("\nReturning To Main Menu")
 #####################################################################################################################
 def count_officers(current_ranks):
