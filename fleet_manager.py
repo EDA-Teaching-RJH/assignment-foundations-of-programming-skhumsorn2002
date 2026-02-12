@@ -4,7 +4,7 @@ def init_database():
     divisions_list = ["Command", "Command", "Operations", "Security", "Sciences"]
     ids_list = ["123", "329", "671", "621", "999"]
     return(names_list, ranks_list, divisions_list, ids_list)
-
+#####################################################################################################################
 def display_menu():
           print("\n--- MENU ---")
           print("1. View All Crew")
@@ -17,32 +17,71 @@ def display_menu():
           print("8. Crew Analysis")
           print("0. Exit")
           return(input("Select option: "))
-
+#####################################################################################################################
 def display_roster(names, ranks, divs, ids):
           for i in range(len(names)):
                print(F"{ids[i]} - {names[i]} - {ranks[i]} - {divs[i]}")
+#####################################################################################################################
+def add_member(current_names, current_ranks, current_divs, current_ids):
+     ranks = ["Cadet", "Ensign", "Lieutenant junior grade", "Lieutenant", "Lt. Commander", "Captain"]
+     divisions = ["Command", "Operations", "Security", "Sciences"]
+     
+     add_name = input("Enter new member name: ").title()
 
-def add_member(names, ranks, divs, ids):
-     add_name = input("Enter new member name: ").title()   
-     add_ranks = input("Enter new member rank: ").title()
-     add_divs = input("Enter new member divisions: ").title()
-     add_ids = input("Enter new member ID(000): ")
+     while True:
+          add_ranks = input("Enter new member rank (Cadet, Ensign, Lieutenant, Lt. Commander, Captain): ").title()
+          if add_ranks not in ranks:
+               print("Invalid Ranks")
+          else:
+               break
+     
+     while True:
+          add_divs = input("Enter new member divisions (Command, Operations, Security, Sciences): ").title()
+          if add_divs not in divisions:
+               print("Invalid Divisions")
+          else:
+               break
+     
+     
+     while True:
+          add_ids = input("Enter new member ID(000): ")
+          if add_ids in current_ids:
+               print("Duplicate ID")
+               print("Enter Different ID\n")
+          else:
+               break
 
-     return(names.append(add_name), ranks.append(add_ranks), divs.append(add_divs), ids.append(add_ids))
+     return(current_names.append(add_name), current_ranks.append(add_ranks), current_divs.append(add_divs), current_ids.append(add_ids))
+#####################################################################################################################
+def remove_member(current_names, current_ranks, current_divs, current_ids):
+     search_id = ("Enter Crew's ID that will be remove: ")
+     if search_id in current_divs:
+          print("Removing Crew Member")
 
+     else:
+          print("Crew Not Found")
+          print("Try Again\n")
+
+     return(current_names.pop(), )
+#####################################################################################################################     
 def main():
      names = init_database()[0]
      ranks = init_database()[1]
      divs = init_database()[2]
      ids = init_database()[3]
      
+     username = input("Enter Your Full Name: ")
+
      while True:
+          print(F"Hello, {username}")
           choices = display_menu()
           if choices == "1":
                print(display_roster(names, ranks, divs, ids))
 
           elif choices == "4":
                add_member(names, ranks, divs, ids)
+          elif choices == "5":
+               remove_member(names, ranks, divs, ids)
           else:
                break
 
