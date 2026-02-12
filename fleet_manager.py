@@ -136,6 +136,47 @@ def search_crew(current_names, current_ranks, current_divs, current_ids):
      print(F"ID: {current_ids[crew_index]} | Name: {current_names[crew_index]} | Rank: {current_ranks[crew_index]} | Division: {current_divs[crew_index]}")
      print("\nReturning To Main Menu")
 #####################################################################################################################
+def filter_by_division(current_names, current_divs):
+     name_found = []
+     print("\nFilter Crew By Division\n")
+
+     while True:
+          search_div = input(f"Enter Division ['Command', 'Command', 'Operations', 'Security', 'Sciences']: ").title()
+
+          if search_div == "Command":
+               for i in range(len(current_divs)):
+                    if search_div == current_divs[i]:
+                         name_found.append(current_names[i])
+                    else:
+                         continue
+               break     
+          elif search_div == "Operations":
+               for i in range(len(current_divs)):
+                    if search_div == current_divs[i]:
+                         name_found.append(current_names[i])
+                    else:
+                         continue
+               break     
+          elif search_div == "Security":
+               for i in range(len(current_divs)):
+                    if search_div == current_divs[i]:
+                         name_found.append(current_names[i])
+                    else:
+                         continue
+               break     
+          elif search_div == "Sciences":
+               for i in range(len(current_divs)):
+                    if search_div == current_divs[i]:
+                         name_found.append(current_names[i])
+                    else:
+                         continue
+               break     
+          else:
+               print("Invalid Division")
+     print(f"\nCrew In {search_div} Division")
+     for i in range(len(name_found)):
+          print(f"{i+1}. {name_found[i]}")
+#####################################################################################################################
 def main():
      names = init_database()[0]
      ranks = init_database()[1]
@@ -154,6 +195,8 @@ def main():
           elif choices == "2":
                search_crew(names, ranks, divs, ids)
           
+          elif choices == "3":
+               filter_by_division(names, divs)
 
           elif choices == "4":
                add_member(names, ranks, divs, ids)
