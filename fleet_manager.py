@@ -213,6 +213,29 @@ def calculate_payroll(current_ranks):
 
      print(F"\nTotal Payroll = {total_pay}")
      print("\nReturning To Main Menu")
+#####################################################################################################################
+def count_officers(current_ranks):
+     officers = []
+     officers_count = []
+     total_count = 0
+
+     if "Captain" in current_ranks:
+          count = current_ranks.count("Captain")
+          officers.append("Captain")
+          officers_count.append(count)
+          total_count = total_count + count
+
+     if "Commander" in current_ranks:
+          count = current_ranks.count("Commander")               
+          officers.append("Commander")
+          officers_count.append(count)
+          total_count = total_count + count
+
+
+     print(F"\nThe ship contain a total of {total_count} Captain and Commander")
+
+     for i in range(len(officers)):
+          print(F"{officers[i]} - {officers_count[i]}")
 
 #####################################################################################################################
 def main():
