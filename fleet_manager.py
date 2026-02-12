@@ -23,21 +23,23 @@ def display_roster(names, ranks, divs, ids):
                print(F"{ids[i]} - {names[i]} - {ranks[i]} - {divs[i]}")
 #####################################################################################################################
 def add_member(current_names, current_ranks, current_divs, current_ids):
-     ranks = ["Cadet", "Ensign", "Lieutenant junior grade", "Lieutenant", "Lt. Commander", "Captain"]
-     divisions = ["Command", "Operations", "Security", "Sciences"]
+     option_ranks = ["Cadet", "Ensign", "Lieutenant junior grade", "Lieutenant", "Lt. Commander", "Captain"]
+     option_divisions = ["Command", "Operations", "Security", "Sciences"]
 
-     add_name = input("Enter new member name: ").title()
+     add_name = input("\nEnter new member name: ").title()
 
      while True:
-          add_ranks = input("Enter new member rank (Cadet, Ensign, Lieutenant, Lt. Commander, Captain): ").title()
-          if add_ranks not in ranks:
+          add_ranks = input(F"Enter new member rank {option_ranks}: ").title()
+
+          if add_ranks not in option_ranks:
                print("Invalid Ranks")
           else:
                break
      
      while True:
-          add_divs = input("Enter new member divisions (Command, Operations, Security, Sciences): ").title()
-          if add_divs not in divisions:
+          add_divs = input(F"Enter new member divisions {option_divisions}: ").title()
+
+          if add_divs not in option_divisions:
                print("Invalid Divisions")
           else:
                break
@@ -45,6 +47,7 @@ def add_member(current_names, current_ranks, current_divs, current_ids):
      
      while True:
           add_ids = input("Enter new member ID(000): ")
+
           if add_ids in current_ids:
                print("Duplicate ID")
                print("Enter Different ID\n")
@@ -55,7 +58,8 @@ def add_member(current_names, current_ranks, current_divs, current_ids):
 #####################################################################################################################
 def remove_member(current_names, current_ranks, current_divs, current_ids):
      while True:
-          search_id = input("Enter Crew's ID that will be remove: ")
+          search_id = input("\nEnter Crew's ID that will be remove: ")
+
           if search_id in current_ids:
                print("Removing Crew Member")
                id_index = current_ids.index(search_id)
@@ -67,7 +71,30 @@ def remove_member(current_names, current_ranks, current_divs, current_ids):
      return(current_names.pop(id_index), current_ranks.pop(id_index), current_divs.pop(id_index), current_ids.pop(id_index) )
 #####################################################################################################################     
 def update_rank(current_names, current_ranks, current_ids):
-     return()
+     option_ranks = ["Cadet", "Ensign", "Lieutenant junior grade", "Lieutenant", "Lt. Commander", "Captain"]
+
+     while True:
+          search_id = input("\nEnter Crew's ID that will be update: ")
+
+          if search_id in current_ids:
+               id_index = current_ids.index(search_id)
+               print(F"\nUpdating rank for {current_names[id_index]} ")
+               break   
+          else:
+               print("Crew Not Found")
+               print("Try Again")
+
+     while True:
+          new_rank = input(F"Enter new rank for: ").title()
+          if new_rank not in option_ranks:
+               print("Invalid Ranks")
+          else:
+               current_ranks[id_index] = new_rank
+               break
+     
+     return(current_names, current_ranks, current_ids)
+#####################################################################################################################
+
 #####################################################################################################################
 def main():
      names = init_database()[0]
