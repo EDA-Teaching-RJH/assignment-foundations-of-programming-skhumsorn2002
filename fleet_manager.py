@@ -16,7 +16,7 @@ def display_menu():
           print("7. Calculate Payroll")
           print("8. Crew Analysis")
           print("0. Exit")
-          return(input("Select option: "))
+          return(input("\nSelect option: "))
 #####################################################################################################################
 def display_roster(names, ranks, divs, ids):
           for i in range(len(names)):
@@ -25,7 +25,7 @@ def display_roster(names, ranks, divs, ids):
 def add_member(current_names, current_ranks, current_divs, current_ids):
      ranks = ["Cadet", "Ensign", "Lieutenant junior grade", "Lieutenant", "Lt. Commander", "Captain"]
      divisions = ["Command", "Operations", "Security", "Sciences"]
-     
+
      add_name = input("Enter new member name: ").title()
 
      while True:
@@ -54,16 +54,21 @@ def add_member(current_names, current_ranks, current_divs, current_ids):
      return(current_names.append(add_name), current_ranks.append(add_ranks), current_divs.append(add_divs), current_ids.append(add_ids))
 #####################################################################################################################
 def remove_member(current_names, current_ranks, current_divs, current_ids):
-     search_id = ("Enter Crew's ID that will be remove: ")
-     if search_id in current_divs:
-          print("Removing Crew Member")
+     while True:
+          search_id = input("Enter Crew's ID that will be remove: ")
+          if search_id in current_ids:
+               print("Removing Crew Member")
+               id_index = current_ids.index(search_id)
+               break
+          else:
+               print("Crew Not Found")
+               print("Try Again\n")
 
-     else:
-          print("Crew Not Found")
-          print("Try Again\n")
-
-     return(current_names.pop(), )
+     return(current_names.pop(id_index), current_ranks.pop(id_index), current_divs.pop(id_index), current_ids.pop(id_index) )
 #####################################################################################################################     
+def update_rank(current_names, current_ranks, current_ids):
+     return()
+#####################################################################################################################
 def main():
      names = init_database()[0]
      ranks = init_database()[1]
@@ -73,18 +78,24 @@ def main():
      username = input("Enter Your Full Name: ")
 
      while True:
-          print(F"Hello, {username}")
+          print(F"\nHello, {username}")
           choices = display_menu()
+
           if choices == "1":
                print(display_roster(names, ranks, divs, ids))
 
           elif choices == "4":
                add_member(names, ranks, divs, ids)
+
           elif choices == "5":
                remove_member(names, ranks, divs, ids)
-          else:
+          
+          elif choices == "6":
+               update_rank(names, ranks, ids)
+
+          elif choices == "0":
                break
-
-
+          else:
+               print("Invalid Input")
 
 main()
