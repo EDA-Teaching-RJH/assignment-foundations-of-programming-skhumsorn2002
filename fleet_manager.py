@@ -4,6 +4,7 @@ def init_database():
     divisions_list = ["Command", "Command", "Operations", "Security", "sciences"]
     ids_list = ["123", "329", "671", "621", "999"]
     return(names_list, ranks_list, divisions_list, ids_list)
+
 #####################################################################################################################
 def display_menu():
           print("\n--- MENU ---")
@@ -17,12 +18,14 @@ def display_menu():
           print("8. Crew Analysis")
           print("0. Exit\n")
           return(input("Select option: "))
+
 #####################################################################################################################
 def display_roster(names, ranks, divs, ids):
           print("\n--- Crew List ---")
           for i in range(len(names)):
                print(F"{ids[i]} - {names[i]} - {ranks[i]} - {divs[i]}")
           print("\nReturning To Main Menu")
+
 #####################################################################################################################
 def add_member(current_names, current_ranks, current_divs, current_ids):
      option_ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior Grade", "Ensign", "Cadet"]
@@ -59,6 +62,7 @@ def add_member(current_names, current_ranks, current_divs, current_ids):
      print(F"\nCrew Have Been Added")
      print("\nReturning To Main Menu")
      return(current_names.append(add_name), current_ranks.append(add_ranks), current_divs.append(add_divs), current_ids.append(add_ids))
+
 #####################################################################################################################
 def remove_member(current_names, current_ranks, current_divs, current_ids):
      print("\n--- Removing Crew ---")
@@ -77,6 +81,7 @@ def remove_member(current_names, current_ranks, current_divs, current_ids):
      print("\nCrew Have Been Removed")
      print("\nReturning To Main Menu")
      return(current_names.pop(crew_index), current_ranks.pop(crew_index), current_divs.pop(crew_index), current_ids.pop(crew_index) )
+
 #####################################################################################################################     
 def update_rank(current_names, current_ranks, current_ids):
      option_ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior Grade", "Ensign", "Cadet"]
@@ -104,6 +109,7 @@ def update_rank(current_names, current_ranks, current_ids):
      print(F"\n{current_names[crew_index]}'s Rank Have Been Updated To {new_rank}")
      print("\nReturning To Main Menu")
      return(current_names, current_ranks, current_ids)
+
 #####################################################################################################################
 def search_crew(current_names, current_ranks, current_divs, current_ids):
      while True:
@@ -134,6 +140,7 @@ def search_crew(current_names, current_ranks, current_divs, current_ids):
                print("Invalid Input")     
      
      print("\nReturning To Main Menu")
+
 #####################################################################################################################
 def filter_by_division(current_names, current_divs):
      name_found = []
@@ -182,6 +189,7 @@ def filter_by_division(current_names, current_divs):
                print(f"{i+1}. {name_found[i]}")
 
      print("\nReturning To Main Menu")
+
 #####################################################################################################################
 def calculate_payroll(current_ranks):
      option_ranks = ["Captain", "Commander", "Lt. Commander", "Lieutenant", "Lieutenant Junior Grade", "Ensign", "Cadet"]
@@ -215,6 +223,7 @@ def calculate_payroll(current_ranks):
 
      print(F"\nTotal Payroll = ${total_pay}")
      print("\nReturning To Main Menu")
+     
 #####################################################################################################################
 def count_officers(current_ranks):
      officers = []

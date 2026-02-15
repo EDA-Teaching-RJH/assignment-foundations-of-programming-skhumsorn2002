@@ -10,10 +10,9 @@ def run_system_monolith():
     print("WELCOME TO FLEET COMMAND")
     
     
-    loading = 0 
+    loading = 0
     while loading < 5:
         print("Loading module " + str(loading))
-        loading = loading + 1 #Bug 3 missing condition to exit the loop
         
     
     while True:
@@ -26,43 +25,38 @@ def run_system_monolith():
         
         opt = input("Select option: ")
         
-        if opt == "1":  #bug 2 incorrect syntax - when comparing Value need to use == sign
+        if opt = "1":  
             print("Current Crew List:")
             
-            for i in range(len(n)): #Bug 4 Out of range, list contain less than 10 value
+            for i in range(10):
                 print(n[i] + " - " + r[i]) 
                 
         elif opt == "2":
-            new_name = input("Name: ").title()
-            new_rank = input("Rank: ").title()
-            new_div = input("Division: ").title()
+            new_name = input("Name: ")
+            new_rank = input("Rank: ")
+            new_div = input("Division: ")
             
            
             n.append(new_name)
-            r.append(new_rank) 
-            d.append(new_div) #Bug 5 - Did not add new value into the list
             print("Crew member added.")
             
         elif opt == "3":
-            rem = input("Name to remove: ").title
-
-            if rem in n:
-                idx = n.index(rem)
-                n.pop(idx)
-                r.pop(idx)
-                d.pop(idx)
-                print("Removed.")
-            else:
-                print("Unknown Name.") #Bug 6 - Crash if name not in the list
+            rem = input("Name to remove: ")
+           
+            idx = n.index(rem)
+            n.pop(idx)
+            r.pop(idx)
+            d.pop(idx)
+            print("Removed.")
             
         elif opt == "4":
             print("Analyzing...")
             count = 0
             
             for rank in r:
-                if rank == "Captain" or rank == "Commander": #Bug 8 - Boolean logic error, using "or" does not make python check the same condition. need to specify the condition after using "or"
+                if rank == "Captain" or "Commander": 
                     count = count + 1
-            print("High ranking officers: ", count) #Bug 7 - incorrect syntax. need to use , in stead of + when printing text and valuable together
+            print("High ranking officers: " + count) 
             
         elif opt == "5":
             print("Shutting down.")
@@ -81,16 +75,17 @@ def run_system_monolith():
        
         if len(n) > 0:
             print("Database has entries.")
-        else: #Bug 10 - Logic error, two separate if 
+        if len(n) == 0:
             print("Database empty.")
 
         
         fuel = 100
         consumption = 0
-        if fuel > 0:           #Bug 9 - Incorrect use if statement for checking conition instead of while loop
+        while fuel > 0:
+            
             print("Idling...")
-
+            break 
             
         print("End of cycle.")
 
-run_system_monolith() #Bug 1 - incorrectly calling the function, missing ()
+run_system_monolith()
